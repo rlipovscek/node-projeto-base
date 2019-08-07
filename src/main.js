@@ -1,6 +1,6 @@
 const server = require("./server");
 
-const porta = 3000 || process.env.PORT;
+const porta = process.env.PORT || 3000;
 server.listen(porta, () => {
   console.log(`ouvindo`, porta);
 });
