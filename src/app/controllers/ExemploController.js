@@ -11,7 +11,7 @@ class ExempleController extends Controller {
    */
   constructor(router) {
     super(router);
-    this.registerRoute(this.ROTAS.CONTEXTO.ROUTE, this.teste);
+    this.registerRouteGet(this.ROTAS.CONTEXTO, this.teste);
   }
 
   /**

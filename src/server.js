@@ -1,5 +1,6 @@
 const express = require("express");
-
+const _path = require("path");
+const auth = require('./app/middleware/auth');
 /**
  * Classe responsavel pela inicializacao e configuracao do servidor
  */
@@ -16,6 +17,7 @@ class App {
    */
   initGlobalMiddleware() {
     this.express.use(express.json());
+    this.express.use(auth);
   }
 
   /**

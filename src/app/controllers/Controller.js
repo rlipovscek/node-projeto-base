@@ -19,7 +19,7 @@ class Controller {
    * @param {string} rota
    * @param {Function} callback funcao registrada como callback da chamada
    */
-  registerRoute(rota, callback) {
+  registerRouteGet(rota, callback) {
     return this.router.get(rota, callback);
   }
 }

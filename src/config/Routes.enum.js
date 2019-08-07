@@ -1,8 +1,6 @@
 module.exports = {
-  CONTEXTO: {
-    ROUTE: "/"
-  },
-  DASHBOARD: {
-    ROUTE: "/dashboard"
+  CONTEXTO:  "/",
+  USUARIOS: {
+    ALL: "/usuarios"
   }
 };
