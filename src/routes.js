@@ -43,8 +43,10 @@ class Routes {
    */
   initRoute(path) {
     try {
-      require(path)(this.router);
+      let clazz = require(path);
+      new clazz(this.router);
     } catch (err) {
+      console.log(err)
       console.log(`path ${path} nao encontrada!
       Verifique o caminho para a inicializacao correta do path`);
     }

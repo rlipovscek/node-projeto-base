@@ -4,7 +4,7 @@ const Controller = require("./Controller");
 /**
  * Controller de exemplo
  */
-class HomeController extends Controller {
+class DashController extends Controller {
   /**
    * Construtor do controller
    * @param {express.Router} router
@@ -24,10 +24,4 @@ class HomeController extends Controller {
   }
 }
 
-/**
- * Recebe o modulo de rotas usado na aplicacao, e deveolve uma instancia do
- * controller
- */
-module.exports = router => {
-  return new HomeController(router);
-};
+module.exports = DashController;
