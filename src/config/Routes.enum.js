@@ -1,6 +1,7 @@
 module.exports = {
-  CONTEXTO:  "/",
+  CONTEXTO: "/",
   USUARIOS: {
-    ALL: "/usuarios"
+    ALL: "/usuarios",
+    SAVE: "/usuarios/salvar"
   }
 };

@@ -1,6 +1,6 @@
 const express = require("express");
-const _path = require("path");
-const auth = require('./app/middleware/auth');
+const auth = require("./app/middleware/auth");
+const DBO = require("./dbo");
 /**
  * Classe responsavel pela inicializacao e configuracao do servidor
  */
@@ -8,6 +8,7 @@ class App {
   constructor() {
     this.express = express();
     this.isDev = process.env.NODE_ENV !== "production";
+    DBO.connect();
     this.initGlobalMiddleware();
     this.initRoutes();
   }

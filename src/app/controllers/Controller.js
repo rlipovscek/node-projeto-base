@@ -22,6 +22,16 @@ class Controller {
   registerRouteGet(rota, callback) {
     return this.router.get(rota, callback);
   }
+
+  /**
+   * Registra as rotas do controller  na aplicacao
+   *
+   * @param {string} rota
+   * @param {Function} callback funcao registrada como callback da chamada
+   */
+  registerRoutePost(rota, callback) {
+    return this.router.post(rota, callback);
+  }
 }
 
 module.exports = Controller;
