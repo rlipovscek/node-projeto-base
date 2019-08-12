@@ -1,6 +1,6 @@
 module.exports = {
   CONTEXTO: "/",
-  USUARIOS: {
+  CLIENTES: {
     ALL: "/usuarios",
     SAVE: "/usuarios/salvar",
     GET_BY_CNPJ: "/usuarios/pj/:cnpj"
@@ -9,5 +9,13 @@ module.exports = {
     INCLUIR: "/incluirConta",
     BLOQUEIO_DESBLOQUEIO: "/bloquearDesbloquearConta",
     ENCERRAR: "/encerrarConta"
+  },
+  USUARIOS: {
+    SAVE: "/usuarios/incluir"
+  },
+  ANEXOS: {
+    SAVE: "/usuarios/pj/:documento/anexos/salvar",
+    GET: "/usuarios/pj/:documento/anexos/:id",
+    GET_ALL: "/usuarios/pj/:documento/anexos"
   }
 };

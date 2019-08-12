@@ -1,18 +1,30 @@
-const Cliente = require("../models/Cliente");
+const Usuario = require("../models/Usuario");
 const LOG = require("./LogService");
+const bcrypt = require("bcrypt");
+const SALTS = 8;
 
 class UsuarioService {
   /**
-   * Recupera todos os usuarios da base de dados
+   * Registra um usuario para acessar o sistema
+   *
+   * @param {Usuario} usuario
+   *
    */
-  async getAll() {
+  async save(usuario) {
     try {
-      LOG.info('Buscando todos os usuarios');
-      // const usuarios = [];
+      console.log("######## inserindo usuario na base ###########");
+      if (JSON.stringify(usuario) === "{}") {
+        throw new Error(`Usuario nao informado`);
+      }
+      usuario.password = await bcrypt.hash(usuario.password, SALTS);
+      console.log(`novo password`, usuario.password);
+      const user = new Usuario(usuario);
       let msgError;
-      const usuarios = await Cliente.find({}, (err, users) => {
-        if (err) {
-          msgError = err.message;
+      console.log("chamando o banco de dados");
+      const ret = await user.save(error => {
+        if (error) {
+          msgError = `Erro ao salvar o usuario ${usuario.usuario} - 
+          ${error}`;
           return;
         }
       });
@@ -20,60 +32,38 @@ class UsuarioService {
       if (msgError) {
         throw new Error(msgError);
       }
-      LOG.info('retornado ' + JSON.stringify(usuarios));
-      return usuarios;
 
-    } catch (err) {
-      Log.info(err.message);
-      console.error(err.message);
-      throw new Error(err.msg);
-    }
-  }
-
-  /**
-  * @param {string} cnpj
-  * @returns {Cliente}
-  */
-  async getByCnpj(cnpj) {
-    try {
-      LOG.info('Buscando cliente de documento ' + cnpj);
-      const usuario = await Cliente.findOne({ cnpj });
-      LOG.info('retornado ' + JSON.stringify(usuario));
-      return usuario;
+      console.log(`retorno `, ret);
+      return `Usuario ${usuario.usuario} criado com sucesso - ${ret}`;
     } catch (err) {
       console.error(err);
+      console.log(err.message);
       LOG.info(err.message);
+      throw new Error(err.message);
     }
   }
 
   /**
-   * Salva um cliente na base da dados
-   *
-   * @param {Cliente} client
+   * recupera um usuario da base de dados
+   * @param {String} usuario
+   * @returns {Usuario}
    */
-  async saveClient(client) {
-    const cliente = new Cliente(client);
+  async find(usuario, password) {
     try {
-      console.log("########## Salvando o usuario ##########")
-      console.log(client)
-      let errMesg;
-      const ret = await cliente.save(err => {
-        if (err) {
-          errMesg = err.message;
-          return err;
-        } else {
-          console.info(`cliente ${client.razaoSocial} salvo com sucesso!`);
-        }
-      });
-      if (errMesg) {
-        throw new Error(errMesg);
+      console.log(`######### Buscando o usuario ${usuario} ############`);
+      const encontrado = await Usuario.findOne({ usuario });
+      if (!encontrado) {
+        return null;
       }
 
-      LOG.info('cliente ${client.razaoSocial} salvo com sucesso!');
-      return ret;
+      if (bcrypt.compareSync(password, encontrado.password)) {
+        console.log(encontrado);
+        return encontrado;
+      } else {
+        return null;
+      }
     } catch (err) {
-      console.info("Erro ao salvar o cliente na base de dados!");
-      console.info(err.message);
+      LOG.info(err.message);
       console.error(err);
       throw new Error(err.message);
     }

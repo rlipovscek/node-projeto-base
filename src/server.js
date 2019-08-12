@@ -1,6 +1,8 @@
 const express = require("express");
+const _path = require("path");
 const auth = require("./app/middleware/auth");
 const DBO = require("./dbo");
+const nunjucks = require("nunjucks");
 /**
  * Classe responsavel pela inicializacao e configuracao do servidor
  */
@@ -11,6 +13,7 @@ class App {
     DBO.connect();
     this.initGlobalMiddleware();
     this.initRoutes();
+    this.views();
   }
 
   /**
@@ -26,6 +29,16 @@ class App {
    */
   initRoutes() {
     this.express.use(require("./routes"));
+  }
+
+  views() {
+    nunjucks.configure(__dirname + "/public/views", {
+      watch: this.isDev,
+      autoescape: false,
+      express: this.express
+    });
+    this.express.use(express.static(_path.resolve(__dirname, "public")));
+    this.express.set("view engine", "njk");
   }
 }
 

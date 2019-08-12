@@ -1,0 +1,9 @@
+{% extends "default.njk" %}
+
+{% block body %}
+  <form action="/singin" method="post" class="box-login center">
+    <input type="text" name="usuario" placeholder="usuario">
+    <input type="password" name="senha" placeholder="senha">
+    <button type="submit">Entrar</button>
+  </form>
+{% endblock %}

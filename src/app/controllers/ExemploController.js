@@ -20,7 +20,7 @@ class ExempleController extends Controller {
    * @param {express.Response} response
    */
   teste(request, response) {
-    return response.send("iniciando um novo app");
+    return response.render("login/login");
   }
 }
 
