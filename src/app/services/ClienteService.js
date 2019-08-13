@@ -70,6 +70,7 @@ class ClienteService {
         throw new Error(errMesg);
       }
 
+      
       LOG.info("cliente ${client.razaoSocial} salvo com sucesso!");
       return ret;
     } catch (err) {
