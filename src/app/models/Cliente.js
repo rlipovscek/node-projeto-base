@@ -1,5 +1,5 @@
 const _mongoose = require("mongoose");
-const Schema = _mongoose.Schema;z
+const Schema = _mongoose.Schema;
 
 const ClienteSchema = new Schema({
   cnpj: {
