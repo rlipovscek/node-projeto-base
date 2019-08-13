@@ -1,7 +1,5 @@
 const Cliente = require("../models/Cliente");
 const LOG = require("./LogService");
-const CONFIG = require('../../config/config');
-const origem = CONFIG.origem;
 
 class ClienteService {
   /**
@@ -12,7 +10,7 @@ class ClienteService {
       LOG.info("Buscando todos os usuarios");
       // const usuarios = [];
       let msgError;
-      const usuarios = await Cliente.find({origem}, (err, users) => {
+      const usuarios = await Cliente.find({}, (err, users) => {
         if (err) {
           msgError = err.message;
           return;
@@ -38,7 +36,7 @@ class ClienteService {
   async getByCnpj(cnpj) {
     try {
       LOG.info("Buscando cliente de documento " + cnpj);
-      const usuario = await Cliente.findOne({ cnpj, origem });
+      const usuario = await Cliente.findOne({ cnpj });
       LOG.info("retornado " + JSON.stringify(usuario));
       return usuario;
     } catch (err) {
@@ -70,7 +68,6 @@ class ClienteService {
         throw new Error(errMesg);
       }
 
-      
       LOG.info("cliente ${client.razaoSocial} salvo com sucesso!");
       return ret;
     } catch (err) {
