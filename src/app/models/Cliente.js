@@ -1,7 +1,12 @@
 const _mongoose = require("mongoose");
 const Schema = _mongoose.Schema;
+const CONFIG = require('../../config/config');
 
 const ClienteSchema = new Schema({
+  origem: {
+    type: String,
+    default: CONFIG.origem
+  },
   cnpj: {
     type: String,
     required: true,
