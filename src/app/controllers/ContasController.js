@@ -30,7 +30,7 @@ class ContasController extends Controller {
         return response.status(400).send("Conta nao informada!");
       }
       const retorno = await Service.save(request.body);
-      return response.status(201).json({
+      return response.status(200).json({
         statusCadastro: "OK",
         descricaoMensagemRetorno: `${conta.protocolo} XPTO`
       });

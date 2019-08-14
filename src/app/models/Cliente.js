@@ -27,8 +27,7 @@ const ClienteSchema = new Schema({
     {
       numero: {
         type: String,
-        required: true,
-        unique: true
+        required: true
       },
       saldo: {
         type: Number,
@@ -63,8 +62,7 @@ const ClienteSchema = new Schema({
       },
       cpfCnpj: {
         type: String,
-        required: true,
-        unique: true
+        required: true
       },
       pep: String
     }

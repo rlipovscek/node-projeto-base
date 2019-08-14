@@ -5,6 +5,11 @@ module.exports = {
     SAVE: "/usuarios/salvar",
     GET_BY_CNPJ: "/usuarios/pj/:cnpj"
   },
+  CLIENTES_PF: {
+    ALL: "/usuarios",
+    SAVE: "/usuarios/pf/salvar",
+    GET_BY_CNPJ: "/usuarios/pf/:cpf"
+  },
   CONTAS: {
     INCLUIR: "/incluirConta",
     BLOQUEIO_DESBLOQUEIO: "/bloquearDesbloquearConta",
