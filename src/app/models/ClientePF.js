@@ -9,31 +9,26 @@ const ClientePF = new Schema({
     },
     nome: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     dataNascimento: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     fotoCliente: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     fotoAssinatura: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     listaDocumento: {
         documento: [
           {
             numeroDocumento: {
                 type: String,
-                required: true,
-                unique: true
+                required: true
               },
             tipoDocumento: {
               type: String,
@@ -47,8 +42,7 @@ const ClientePF = new Schema({
     },
     cnpjFintech: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     nacionalidade: {
         type: String,
@@ -75,11 +69,11 @@ const ClientePF = new Schema({
         required: true
     },
     rendaMensal: {
-        type: BigInt,
+        type: Number,
         required: true
     },
     rendaPresumida: {
-        type: BigInt,
+        type: Number,
         required: true
     },
     clienteDesde: {
@@ -98,10 +92,98 @@ const ClientePF = new Schema({
               required: true
             },
             tipoConta: {
-              type: Int,
-              unique: true
+              type: Number,
+              required: true
             },
-            nome: {
+            status: {
+              type: Number,
+              required: true
+            },
+            saldo: {
+                type: Number,
+                required: true
+            },
+            dataAbertura: {
+                type: Date,
+                required: true,
+                default: new Date()
+            },
+            dataEncerramento: {
+                type: Date
+            }
+          }
+        ]
+      },
+      listaEndereco: {
+        endereco: [
+          {
+            logradouro: {
+              type: String,
+              required: true
+            },
+            numero: {
+              type: String,
+              required: true
+            },
+            complemento: {
+              type: String
+            },
+            bairro: {
+              type: String,
+              required: true
+            },
+            cidade: {
+                type: String,
+                required: true
+            },
+            estado: {
+                type: String,
+                required: true
+            },
+            cep: {
+                type: String,
+                required: true
+            },
+            pais: {
+                type: String,
+                required: true
+            },
+            correspondencia: {
+                type: Boolean,
+                required: true
+            }
+          }
+        ]
+      },
+      listaTelefone: {
+        telefone: [
+          {
+            codigoPais: {
+              type: Number,
+              required: true
+            },
+            codigoDDD: {
+              type: Number,
+              required: true
+            },
+            numeroTelefone: {
+              type: Number,
+              required: true
+            },
+            tipoTelefone: {
+              type: String,
+              required: true
+            }
+          }
+        ]
+      },
+      listaAnexo: {
+        anexo: [
+          {
+            descricao: {
+              type: String
+            },
+            identificacaoAnexo: {
               type: String
             }
           }
@@ -109,5 +191,5 @@ const ClientePF = new Schema({
       }
     });
 
-module.exports = mongoose.model('ClientePf', ClientePF);
+module.exports = mongoose.model('ClientePF', ClientePF);
 
