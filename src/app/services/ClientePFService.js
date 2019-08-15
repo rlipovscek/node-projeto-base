@@ -17,5 +17,15 @@ class ClientePFService{
             throw new Error(err.message);
         }
     }
+
+    async getByCPF(cpf){
+        try{
+            const cliente = ClientePF.findOne({ cpf });
+            return cliente;
+        } catch(err){
+            Log.info(err.message);
+            throw new Error(err.message);
+        }
+    }
 }
 module.exports = new ClientePFService();

@@ -51,23 +51,10 @@ class ClienteService {
    * @param {Cliente} client
    */
   async saveClient(client) {
-    const cliente = new Cliente(client);
     try {
       console.log("########## Salvando o usuario ##########");
       console.log(client);
-      let errMesg;
-      const ret = await cliente.save(err => {
-        if (err) {
-          errMesg = err.message;
-          return err;
-        } else {
-          console.info(`cliente ${client.razaoSocial} salvo com sucesso!`);
-        }
-      });
-      if (errMesg) {
-        throw new Error(errMesg);
-      }
-
+      Cliente.create(client);
       LOG.info("cliente ${client.razaoSocial} salvo com sucesso!");
       return ret;
     } catch (err) {

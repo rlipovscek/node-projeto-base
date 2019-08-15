@@ -8,7 +8,7 @@ module.exports = {
   CLIENTES_PF: {
     ALL: "/usuarios",
     SAVE: "/usuarios/pf/salvar",
-    GET_BY_CNPJ: "/usuarios/pf/:cpf"
+    GET_BY_CPF: "/usuarios/pf/:cpf"
   },
   CONTAS: {
     INCLUIR: "/incluirConta",
