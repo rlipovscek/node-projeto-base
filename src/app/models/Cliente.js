@@ -71,8 +71,7 @@ const ClienteSchema = new Schema({
     {
       descricao: String,
       idAnexo: {
-        type: String,
-        unique: true
+        type: String
       }
     }
   ]
