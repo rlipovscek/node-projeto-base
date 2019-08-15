@@ -10,6 +10,7 @@ module.exports = {
     SAVE: "/usuarios/pf/salvar",
     GET_BY_CPF: "/usuarios/pf/:cpf"
   },
+  
   CONTAS: {
     INCLUIR: "/incluirConta",
     BLOQUEIO_DESBLOQUEIO: "/bloquearDesbloquearConta",
