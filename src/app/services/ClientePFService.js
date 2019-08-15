@@ -19,6 +19,7 @@ class ClientePFService{
     }
 
     async getByCPF(cpf){
+        
         try{
             const cliente = await ClientePF.findOne({ cpf });
             console.log("--------------- cliente encontrado ---------------");
