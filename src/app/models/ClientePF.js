@@ -81,11 +81,11 @@ const ClientePF = new Schema({
   },
   contas: [
     {
-      numeroConta: {
+      numero: {
         type: String,
         required: true
       },
-      numeroAgencia: {
+      agencia: {
         type: String,
         required: true
       },
@@ -178,7 +178,7 @@ const ClientePF = new Schema({
       descricao: {
         type: String
       },
-      identificacaoAnexo: {
+      idAnexo: {
         type: String
       }
     }
