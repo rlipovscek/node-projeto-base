@@ -14,6 +14,7 @@
 3. efetue o pull do projeto na origem do heroku com o comando: `git pull heroku master`
 4. efetue o commit e o push na origem do heroku com o comando: `git push heroku master`
 
+
 # Edição
 
 - Para editar as rotas do projeto utilize o arquivo /config/Routes.enum.js
