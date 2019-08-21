@@ -162,7 +162,7 @@ const ClientePF = new Schema({
         type: Number,
         required: true
       },
-      numeroTelefone: {
+      numero: {
         type: Number,
         required: true
       },

@@ -50,14 +50,9 @@ class ContaService {
         );
       }
 
-      const c = new Conta(conta);
+      // const c = new Conta(conta);
       let msgError;
-      const ret = await c.save(error => {
-        if (error) {
-          msgError = error;
-          return;
-        }
-      });
+      const ret = await Conta.create(conta);
 
       if (msgError) {
         throw new Error(msgError);
